@@ -20,24 +20,23 @@ def parse_lists(riddle, wordlist):
 def find_glueword(riddles_txt, wordlist_txt):
 
     riddle_list, word_dict = parse_lists(riddles_txt, wordlist_txt)
-    first, last, result, length = [], [], [], 0
+    lim_first, lim_last, intersect = set(), set(), set()
 
     for riddle in riddle_list:
         for k, v in word_dict.items():
             if k.startswith(riddle[0]):
-                first.append(k.replace(riddle[0], ''))
+                lim_first.add(k.replace(riddle[0], ''))
             if k.endswith(riddle[1]):
-                last.append(k.replace(riddle[1], ''))
+                lim_last.add(k.replace(riddle[1], ''))
 
-        for item in first:
-            if item in last and item not in result and item in word_dict:
-                result.append(item)
+        intersect.update(lim_first.intersection(lim_last))
+        lim_first.clear()
+        lim_last.clear()
 
-        first.clear()
-        last.clear()
-
-    for s in result:
-        length += len(s)
+    length = 0
+    for i in intersect:
+        if i in word_dict:
+            length += len(i)
 
     return length
 
