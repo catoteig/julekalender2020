@@ -1,0 +1,4 @@
+1 3 [Jenny, Alvin, Greger, Petra, Olaug, Olaf]
+2 3 [Jenny, Alvin, Greger, Petra, Olaug, Olaf]
+3 3 [Jenny, Alvin, Greger, Petra, Olaug]
+4 3 [Jenny, Alvin, Greger, Petra, Olaug, Olaf]
